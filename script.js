@@ -146,15 +146,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(formData)
             });
 
-            if (!response.ok) {
-                if (response.status === 422) {
-                    throw new Error("Some of the submitted information was invalid according to the server.");
-                }
-                throw new Error(`Server returned HTTP ${response.status}`);
-            }
+const responseText = await response.text();
 
-            const result = await response.json();
-            showResult(result.predicted_mental_health_score);
+console.log("API Status:", response.status);
+console.log("API Response:", responseText);
+
+if (!response.ok) {
+    throw new Error(
+        responseText || `Server returned HTTP ${response.status}`
+    );
+}
+
+if (!responseText.trim()) {
+    throw new Error("The prediction server returned an empty response.");
+}
+
+const result = JSON.parse(responseText);
+
+if (typeof result.predicted_mental_health_score !== 'number') {
+    throw new Error("The server response does not contain a valid prediction.");
+}
+
+showResult(result.predicted_mental_health_score);
+
+
+
+            // if (!response.ok) {
+            //     if (response.status === 422) {
+            //         throw new Error("Some of the submitted information was invalid according to the server.");
+            //     }
+            //     throw new Error(`Server returned HTTP ${response.status}`);
+            // }
+
+            // const result = await response.json();
+            // showResult(result.predicted_mental_health_score);
 
         } catch (error) {
             console.error('Prediction Error:', error);
