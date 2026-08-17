@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         switchView('loading');
 
         try {
-            const response = await fetch('https://mental-health-score-predictor-ovfy.onrender.com', {
+            const response = await fetch('https://mental-health-score-predictor-1-g5ur.onrender.com/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
