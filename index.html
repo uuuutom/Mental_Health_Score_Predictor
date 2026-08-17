@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MentalHealth AI | Assessment</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <span>MentalHealth AI</span>
+            </div>
+            <nav class="nav">
+                <a href="#home">Home</a>
+                <a href="#assessment">Assessment</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container hero-content">
+                <span class="badge">AI-Powered Mental Health Assessment</span>
+                <h1>Understand Your Mental Health Score</h1>
+                <p>Gain insights into your wellbeing based on your lifestyle, academic workload, and digital behavior. This model generates a predictive score to help you reflect on your habits.</p>
+                <button class="btn btn-primary btn-large" onclick="document.getElementById('assessment').scrollIntoView({behavior: 'smooth'})">Check My Score</button>
+            </div>
+        </section>
+
+        <section id="assessment" class="assessment-section">
+            <div class="container">
+                <div class="card assessment-card" id="assessment-container">
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+                    <div class="step-indicators">
+                        <span class="step-indicator active">About You</span>
+                        <span class="step-indicator">Digital Lifestyle</span>
+                        <span class="step-indicator">Daily Lifestyle</span>
+                    </div>
+
+                    <form id="prediction-form">
+                        <!-- Step 1: About You -->
+                        <div class="form-step active" data-step="1">
+                            <h2>Section 1: About You</h2>
+                            <p class="section-desc">Basic demographic and academic information.</p>
+                            
+                            <div class="form-grid">
+                                <div class="input-group">
+                                    <label for="age">Age</label>
+                                    <input type="number" id="age" name="age" min="10" max="100" placeholder="e.g. 21" required>
+                                    <span class="error-message" id="error-age">Please enter a valid age (10-100).</span>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="gender">Gender</label>
+                                    <select id="gender" name="gender" required>
+                                        <option value="" disabled selected>Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                    <span class="error-message" id="error-gender">Please select a gender.</span>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="country">Country</label>
+                                    <select id="country" name="country" required>
+                                        <option value="" disabled selected>Select Country</option>
+                                        <option value="India">India</option>
+                                        <option value="USA">USA</option>
+                                        <option value="Canada">Canada</option>
+                                        <option value="Australia">Australia</option>
+                                        <option value="UK">UK</option>
+                                        <option value="Germany">Germany</option>
+                                        <option value="Mexico">Mexico</option>
+                                        <option value="Turkey">Turkey</option>
+                                        <option value="France">France</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <span class="error-message" id="error-country">Please select a country.</span>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="academic_level">Academic Level</label>
+                                    <select id="academic_level" name="academic_level" required>
+                                        <option value="" disabled selected>Select Level</option>
+                                        <option value="High School">High School</option>
+                                        <option value="Undergraduate">Undergraduate</option>
+                                        <option value="Graduate">Graduate</option>
+                                    </select>
+                                    <span class="error-message" id="error-academic_level">Please select an academic level.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Digital Lifestyle -->
+                        <div class="form-step" data-step="2">
+                            <h2>Section 2: Digital Lifestyle</h2>
+                            <p class="section-desc">Details about your social media usage and device habits.</p>
+
+                            <div class="form-grid">
+                                <div class="input-group">
+                                    <label for="most_used_platform">Most Used Platform</label>
+                                    <select id="most_used_platform" name="most_used_platform" required>
+                                        <option value="" disabled selected>Select Platform</option>
+                                        <option value="Instagram">Instagram</option>
+                                        <option value="Facebook">Facebook</option>
+                                        <option value="LinkedIn">LinkedIn</option>
+                                        <option value="Snapchat">Snapchat</option>
+                                        <option value="Twitter">Twitter</option>
+                                        <option value="YouTube">YouTube</option>
+                                        <option value="TikTok">TikTok</option>
+                                        <option value="WhatsApp">WhatsApp</option>
+                                        <option value="WeChat">WeChat</option>
+                                        <option value="LINE">LINE</option>
+                                        <option value="KakaoTalk">KakaoTalk</option>
+                                        <option value="VKontakte">VKontakte</option>
+                                    </select>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="purpose_of_use">Primary Purpose of Use</label>
+                                    <select id="purpose_of_use" name="purpose_of_use" required>
+                                        <option value="" disabled selected>Select Purpose</option>
+                                        <option value="Entertainment">Entertainment</option>
+                                        <option value="Networking">Networking</option>
+                                        <option value="Education">Education</option>
+                                        <option value="News">News</option>
+                                    </select>
+                                </div>
+
+                                <div class="input-group full-width">
+                                    <label for="avg_daily_usage_hours">
+                                        Average Daily Usage <span class="val-display" id="val-usage">0</span> <span class="unit">hours/day</span>
+                                    </label>
+                                    <input type="range" id="avg_daily_usage_hours" name="avg_daily_usage_hours" min="0" max="24" step="0.5" value="0">
+                                </div>
+
+                                <div class="input-group full-width">
+                                    <label for="daily_unlocks">Daily Phone Unlocks</label>
+                                    <input type="number" id="daily_unlocks" name="daily_unlocks" min="0" placeholder="e.g. 60 times a day" required>
+                                    <span class="error-message" id="error-daily_unlocks">Must be 0 or higher.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Daily Lifestyle -->
+                        <div class="form-step" data-step="3">
+                            <h2>Section 3: Daily Lifestyle</h2>
+                            <p class="section-desc">Information about sleep, study, and physical activity.</p>
+
+                            <div class="form-grid">
+                                <div class="input-group full-width">
+                                    <label for="study_hours">
+                                        Study Hours <span class="val-display" id="val-study">0</span> <span class="unit">hours/day</span>
+                                    </label>
+                                    <input type="range" id="study_hours" name="study_hours" min="0" max="24" step="0.5" value="0">
+                                </div>
+
+                                <div class="input-group full-width">
+                                    <label for="physical_activity_hours">
+                                        Physical Activity <span class="val-display" id="val-physical">0</span> <span class="unit">hours/day</span>
+                                    </label>
+                                    <input type="range" id="physical_activity_hours" name="physical_activity_hours" min="0" max="24" step="0.5" value="0">
+                                </div>
+
+                                <div class="input-group full-width">
+                                    <label for="sleep_hours_per_night">
+                                        Sleep Hours <span class="val-display" id="val-sleep">0</span> <span class="unit">hours/night</span>
+                                    </label>
+                                    <input type="range" id="sleep_hours_per_night" name="sleep_hours_per_night" min="0" max="24" step="0.5" value="0">
+                                </div>
+
+                                <div class="input-group full-width">
+                                    <label for="stress_level">Current Stress Level</label>
+                                    <select id="stress_level" name="stress_level" required>
+                                        <option value="" disabled selected>Select Level</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                        <option value="Very High">Very High</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="form-actions">
+                            <button type="button" id="btn-prev" class="btn btn-secondary hidden">Back</button>
+                            <button type="button" id="btn-next" class="btn btn-primary">Next Step</button>
+                            <button type="submit" id="btn-submit" class="btn btn-primary hidden">Calculate My Score</button>
+                        </div>
+                    </form>
+
+                    <!-- Loading View -->
+                    <div id="loading-view" class="hidden text-center">
+                        <div class="spinner"></div>
+                        <h3>Analyzing your responses...</h3>
+                        <p>Communicating with the machine-learning model.</p>
+                    </div>
+
+                    <!-- Result View -->
+                    <div id="result-view" class="hidden text-center">
+                        <span class="badge result-badge">Model Output</span>
+                        <h2>Your Predicted Mental Health Score</h2>
+                        
+                        <div class="score-container">
+                            <svg class="score-circle" viewBox="0 0 36 36">
+                                <path class="circle-bg"
+                                    d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                                />
+                                <path class="circle-path" id="score-path"
+                                    stroke-dasharray="0, 100"
+                                    d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                                />
+                            </svg>
+                            <div class="score-value" id="final-score">0.00</div>
+                        </div>
+                        
+                        <p class="disclaimer">
+                            This score is an output of a machine-learning model based on the information you provided. It is for educational purposes only and is not a professional medical diagnosis.
+                        </p>
+
+                        <div class="result-actions">
+                            <button type="button" class="btn btn-primary" onclick="resetForm()">Retake Assessment</button>
+                            <button type="button" class="btn btn-secondary" onclick="editResponses()">Edit Responses</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Error State -->
+                    <div id="error-view" class="hidden error-card">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        <h3 id="error-title">Connection Error</h3>
+                        <p id="error-desc">Unable to connect to the prediction server. Please make sure the FastAPI backend is running on http://127.0.0.1:8000.</p>
+                        <button type="button" class="btn btn-secondary" onclick="editResponses()">Go Back</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container text-center">
+                <h2>About This Project</h2>
+                <p class="about-text">
+                    This project utilizes a machine-learning backend built with Python, FastAPI, and scikit-learn. It processes various inputs—ranging from daily screen time to academic status—to generate a predictive score. 
+                </p>
+                <p class="about-text disclaimer-strong">
+                    <strong>Disclaimer:</strong> This tool is strictly for educational and project demonstration purposes. The predictions generated by the algorithm do not constitute, and should not be interpreted as, professional medical advice or clinical diagnosis.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <p>Built with FastAPI, Python, Machine Learning, HTML, CSS & JavaScript</p>
+            <p class="small-text">Educational / Project Purpose — Not Medical Diagnosis</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
